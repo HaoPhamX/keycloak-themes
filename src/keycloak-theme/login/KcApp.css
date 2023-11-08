@@ -1,16 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.my-color {
-	color: red;
-}
+@layer base {
+    .my-root-class {
+        @apply bg-background text-foreground bg-none;
+    }
 
-.my-font {
-	font-family: 'Work Sans';
-}
+    .my-root-class body {
+        @apply bg-no-repeat bg-cover font-inter bg-red-50 bg-none;
+    }
+    #kc-info {
+        @apply p-0;
+    }
+    #root {
+        @apply h-full;
+    }
+    div.kc-logo-text {
+        @apply bg-no-repeat bg-[url(./assets/dcorp-logo.png)] w-[124px] min-h-[40px];
+    }
+    label {
+        @apply m-0;
+    }
 
-.my-root-class {
-	background: white;
-}
-
-.my-root-class body {
-	background: url(./assets/background.svg) no-repeat center center fixed;
+    h1 {
+        @apply text-4xl font-semibold;
+    }
+    h2 {
+        @apply text-3xl font-semibold;
+    }
+    h3 {
+        @apply text-2xl font-semibold;
+    }
+    h4 {
+        @apply text-xl font-semibold;
+    }
 }

@@ -14,53 +14,15 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
   -->
-  <title>React App</title>
-
-  <link rel="preload" href="%PUBLIC_URL%/fonts/WorkSans/worksans-bold-webfont.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="%PUBLIC_URL%/fonts/WorkSans/worksans-medium-webfont.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="%PUBLIC_URL%/fonts/WorkSans/worksans-regular-webfont.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="%PUBLIC_URL%/fonts/WorkSans/worksans-semibold-webfont.woff2" as="font" crossorigin="anonymous">
+  <title>${msg("loginTitle",(realm.displayName!''))}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- SEE: https://docs.keycloakify.dev/limitations#self-hosted-fonts -->
   <!-- Don't forget to import your custom fonts in Storybook as well: https://github.com/keycloakify/keycloakify-starter/blob/bb019e66fb09166cb9af1e24e230994f59daa420/src/keycloak-theme/login/createPageStory.tsx#L21 -->
   <style>
-    /* latin */
-    @font-face {
-    	font-family: 'Work Sans';
-    	font-style: normal;
-    	font-weight: normal;
-    	/*400*/
-    	font-display: swap;
-    	src: url("%PUBLIC_URL%/fonts/WorkSans/worksans-regular-webfont.woff2") format("woff2");
-    }
-  
-    /* latin */
-    @font-face {
-    	font-family: 'Work Sans';
-    	font-style: normal;
-    	font-weight: 500;
-    	font-display: swap;
-    	src: url("%PUBLIC_URL%/fonts/WorkSans/worksans-medium-webfont.woff2") format("woff2");
-    }
-  
-    /* latin */
-    @font-face {
-    	font-family: 'Work Sans';
-    	font-style: normal;
-    	font-weight: 600;
-    	font-display: swap;
-    	src: url("%PUBLIC_URL%/fonts/WorkSans/worksans-semibold-webfont.woff2") format("woff2");
-    }
-  
-    /* latin */
-    @font-face {
-    	font-family: 'Work Sans';
-    	font-style: normal;
-    	font-weight: bold;
-    	/*700*/
-    	font-display: swap;
-    	src: url("%PUBLIC_URL%/fonts/WorkSans/worksans-bold-webfont.woff2") format("woff2");
-    }
-  </style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    </style>
 
 </head>
 

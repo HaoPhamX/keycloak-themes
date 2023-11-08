@@ -68,54 +68,13 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className="flex h-full overflow-auto shadow-sm">
-            <div className="flex-col justify-center hidden w-full h-full p-6 sm:flex">
+            <div className="flex-col justify-center hidden w-full h-full p-6 sm:flex sm:min-w-[432px]">
                 <Product {...props} />
             </div>
-            <div className="flex flex-col items-center justify-center h-full col-span-full bg-card min-w-full sm:w-full sm:max-w-[700px] sm:min-w-[400px]">
-                <Card className="flex flex-col justify-center w-full border-none rounded-none shadow-none">
+            <div className="flex flex-col items-center justify-center w-full h-full col-span-full bg-card sm:max-w-[800px]">
+                <Card className="flex flex-col justify-center w-full border-none rounded-none shadow-none max-w-[432px]">
                     <CardHeader>
-                        <div className="kc-logo-text" />
-                        <div className="flex items-center justify-end">
-                            {realm.internationalizationEnabled &&
-                                (assert(locale !== undefined), true) &&
-                                locale.supported.length > 1 && (
-                                    <Select
-                                        onValueChange={(languageTag) => {
-                                            console.log(languageTag)
-
-                                            changeLocale(languageTag)
-                                        }}
-                                    >
-                                        <SelectTrigger className="w-fit">
-                                            <SelectValue
-                                                placeholder={
-                                                    labelBySupportedLanguageTag[
-                                                        currentLanguageTag
-                                                    ]
-                                                }
-                                            />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectGroup>
-                                                {locale.supported.map(
-                                                    ({ languageTag }) => (
-                                                        <SelectItem
-                                                            key={languageTag}
-                                                            value={languageTag}
-                                                        >
-                                                            {
-                                                                labelBySupportedLanguageTag[
-                                                                    languageTag
-                                                                ]
-                                                            }
-                                                        </SelectItem>
-                                                    )
-                                                )}
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
-                                )}
-                        </div>
+                        <div className="mx-auto mb-4 kc-logo-text" />
                         <CardTitle className="text-center">
                             {!(
                                 auth !== undefined &&
@@ -292,6 +251,48 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 </form>
                             )}
                         {displayInfo && infoNode}
+                        <div className="flex items-center justify-center">
+                            {realm.internationalizationEnabled &&
+                                (assert(locale !== undefined), true) &&
+                                locale.supported.length > 1 && (
+                                    <Select
+                                        onValueChange={(languageTag) => {
+                                            console.log(languageTag)
+
+                                            changeLocale(languageTag)
+                                        }}
+                                    >
+                                        <SelectTrigger className="w-fit">
+                                            <SelectValue
+                                                placeholder={
+                                                    labelBySupportedLanguageTag[
+                                                        currentLanguageTag
+                                                    ]
+                                                }
+                                            />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                {locale.supported.map(
+                                                    ({ languageTag }) => (
+                                                        <SelectItem
+                                                            key={languageTag}
+                                                            value={languageTag}
+                                                        >
+                                                            {
+                                                                labelBySupportedLanguageTag[
+                                                                    languageTag
+                                                                ]
+                                                            }
+                                                        </SelectItem>
+                                                    )
+                                                )}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                )}
+                        </div>
+                        <div id="kc-footer" />
                     </CardContent>
                 </Card>
             </div>

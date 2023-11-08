@@ -24,10 +24,10 @@ const productDomains: Product[] = [
         title: 'SkyInvoice',
     },
     {
-        title: 'KDS Pro',
+        title: 'SkyInventory',
     },
     {
-        title: 'SkyInventory',
+        title: 'KDS Pro',
     },
 ]
 
@@ -44,15 +44,17 @@ const Product = (props: TemplateProps<KcContext, I18n>) => {
 
     const { msgStr } = i18n
     return (
-        <div className="text-center">
-            <h1>{msgStr('productTitle')}</h1>
+        <div className="space-y-6 text-center">
+            <h1 className="mb-2">{msgStr('productTitle')}</h1>
             <h4 className="font-normal text-muted-foreground">
                 {msgStr('productTitle')}
             </h4>
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
-                {productDomains.map((product) => (
-                    <ProductItem {...product} />
-                ))}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+                <div className="grid grid-cols-3 gap-4">
+                    {productDomains.map((product) => (
+                        <ProductItem {...product} />
+                    ))}
+                </div>
             </div>
         </div>
     )

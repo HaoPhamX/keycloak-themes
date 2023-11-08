@@ -66,7 +66,7 @@ export default function Login(
             {...{ kcContext, i18n, doUseDefaultCss, classes }}
             displayInfo={social.displayInfo}
             displayWide={realm.password && social.providers !== undefined}
-            headerNode={msg('doLogIn')}
+            headerNode={msg('loginTitle')}
             infoNode={
                 realm.password &&
                 realm.registrationAllowed &&
@@ -82,7 +82,7 @@ export default function Login(
         >
             {realm.password && (
                 <form
-                    className="space-y-4"
+                    className="space-y-6"
                     onSubmit={onSubmit}
                     action={url.loginAction}
                     method="post"

@@ -8,6 +8,10 @@ const Template = lazy(() => import('./Template'))
 const DefaultTemplate = lazy(() => import('keycloakify/login/Template'))
 
 const Login = lazy(() => import('./pages/Login'))
+const LoginUpdatePassword = lazy(() => import('./pages/LoginUpdatePassword'))
+const LoginResetPassword = lazy(() => import('./pages/LoginResetPassword'))
+const LoginUpdateProfile = lazy(() => import('./pages/LoginUpdateProfile'))
+
 // If you can, favor register-user-profile.ftl over register.ftl, see: https://docs.keycloakify.dev/realtime-input-validation
 const Register = lazy(() => import('./pages/Register'))
 const RegisterUserProfile = lazy(() => import('./pages/RegisterUserProfile'))
@@ -45,6 +49,27 @@ export default function KcApp(props: { kcContext: KcContext }) {
                     case 'login.ftl':
                         return (
                             <Login
+                                {...{ kcContext, i18n, Template, classes }}
+                                doUseDefaultCss={true}
+                            />
+                        )
+                    case 'login-update-password.ftl':
+                        return (
+                            <LoginUpdatePassword
+                                {...{ kcContext, i18n, Template, classes }}
+                                doUseDefaultCss={true}
+                            />
+                        )
+                    case 'login-reset-password.ftl':
+                        return (
+                            <LoginResetPassword
+                                {...{ kcContext, i18n, Template, classes }}
+                                doUseDefaultCss={true}
+                            />
+                        )
+                    case 'login-update-profile.ftl':
+                        return (
+                            <LoginUpdateProfile
                                 {...{ kcContext, i18n, Template, classes }}
                                 doUseDefaultCss={true}
                             />

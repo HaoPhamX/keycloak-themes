@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    .form-group {
+        @apply grid items-center gap-2;
+    }
     .my-root-class {
         @apply bg-background text-foreground bg-none;
     }
@@ -17,10 +20,10 @@
         @apply h-full;
     }
     div.kc-logo-text {
-        @apply bg-no-repeat bg-[url(./assets/dcorp-logo.png)] w-[124px];
+        @apply bg-no-repeat bg-[url(./assets/dcorp-logo.png)] w-[124px] min-h-[40px] max-h-[40px];
     }
     #kc-footer {
-        @apply bg-no-repeat bg-[url(./assets/powered_by_dcorp.png)] w-[106px] h-[9px] mx-auto fixed bottom-6 left-6;
+        @apply bg-no-repeat bg-[url(./assets/powered_by_dcorp.png)] w-[106px] h-[9px] mx-auto absolute bottom-6 left-1/2 -translate-x-1/2;
     }
     a {
         @apply text-blue-500;
@@ -30,15 +33,15 @@
     }
 
     h1 {
-        @apply text-3xl font-semibold;
+        @apply text-3xl font-semibold text-title;
     }
     h2 {
-        @apply text-2xl font-semibold;
+        @apply text-2xl font-semibold text-title;
     }
     h3 {
-        @apply text-xl font-semibold;
+        @apply text-xl font-semibold text-title;
     }
     h4 {
-        @apply text-lg font-semibold;
+        @apply text-lg font-semibold text-title;
     }
 }

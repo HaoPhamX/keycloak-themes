@@ -7,7 +7,8 @@ export const { useI18n } = createUseI18n({
     // https://user-images.githubusercontent.com/6702424/182050652-522b6fe6-8ee5-49df-aca3-dba2d33f24a5.png
     vi: {
         productTitle: 'Hệ sinh thái Cloud POS Platform',
-        productDescription: 'Câu giới thiệu',
+        productDescription:
+            'Giải pháp quản lý toàn diện giúp doanh nghiệp F&B đi đầu xu hướng chuyển đổi số và mở rộng chuỗi kinh doanh bền vững.',
         locale_vi: 'Tiếng Việt',
         loginTitle: 'Đăng nhập Dcorp',
         doLogIn: 'Đăng nhập',
@@ -585,8 +586,9 @@ export const { useI18n } = createUseI18n({
     },
     //@ts-ignore
     en: {
-        productTitle: 'Hệ sinh thái Cloud POS Platform',
-        productDescription: 'Câu giới thiệu',
+        productTitle: 'Cloud POS Platform ecosystem',
+        productDescription:
+            'A comprehensive management solution that helps F&B businesses stay ahead of the digital transformation trend and expand their sustainable business chains.',
         locale_vi: 'Vietnamese',
         loginTitle: 'Sign in to DCORP',
     },

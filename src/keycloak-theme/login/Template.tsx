@@ -68,11 +68,12 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className="flex h-full overflow-auto shadow-sm">
-            <div className="flex-col justify-center hidden w-full h-full p-6 sm:flex sm:min-w-[432px]">
+            <div className="flex-col justify-center hidden w-full h-full p-6 md:flex md:min-w-[432px] relative">
                 <Product {...props} />
+                <div id="kc-footer" />
             </div>
-            <div className="flex flex-col items-center justify-center w-full h-full col-span-full bg-card sm:max-w-[800px]">
-                <Card className="flex flex-col justify-center w-full border-none rounded-none shadow-none max-w-[432px]">
+            <div className="flex flex-col items-center justify-center w-full h-full col-span-full bg-card md:max-w-[800px] relative">
+                <Card className="flex flex-col justify-center w-full border-none rounded-none shadow-none max-w-[500px]">
                     <CardHeader>
                         <div className="mx-auto mb-4 kc-logo-text" />
                         <CardTitle className="text-center">
@@ -103,9 +104,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                             </span>
                                         </div>
                                         <div className="col-md-10">
-                                            <h1 id="kc-page-title">
-                                                {headerNode}
-                                            </h1>
+                                            <h1>{headerNode}</h1>
                                         </div>
                                     </div>
                                 ) : (
@@ -197,7 +196,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             )}
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="flex flex-col h-full space-y-4 overflow-auto">
+                    <CardContent className="flex flex-col h-full overflow-auto gap-y-4 ">
                         {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
                         {displayMessage &&
                             message !== undefined &&
@@ -251,7 +250,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 </form>
                             )}
                         {displayInfo && infoNode}
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-center mt-7">
                             {realm.internationalizationEnabled &&
                                 (assert(locale !== undefined), true) &&
                                 locale.supported.length > 1 && (
@@ -292,9 +291,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     </Select>
                                 )}
                         </div>
-                        <div id="kc-footer" />
                     </CardContent>
                 </Card>
+                <div id="kc-footer" className="md:hidden" />
             </div>
         </div>
     )

@@ -87,7 +87,7 @@ export default function Login(
                     action={url.loginAction}
                     method="post"
                 >
-                    <div className="grid w-full items-center gap-1.5">
+                    <div className="grid items-center w-full gap-2">
                         {!usernameHidden &&
                             (() => {
                                 const label = !realm.loginWithEmailAllowed
@@ -122,7 +122,7 @@ export default function Login(
                                 )
                             })()}
                     </div>
-                    <div className="grid w-full  items-center gap-1.5">
+                    <div className="grid items-center w-full gap-2">
                         <Label htmlFor="password">{msg('password')}</Label>
                         <Input
                             tabIndex={2}

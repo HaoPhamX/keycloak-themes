@@ -18,8 +18,15 @@ import {
     SelectItem,
 } from 'components/ui/select'
 import Product from '../../components/Product'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, Redo2 } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from 'components/ui/alert'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from 'components/ui/tooltip'
+import { Button } from 'components/ui/button'
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -68,230 +75,162 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className="flex h-full overflow-auto shadow-sm">
-            <div className="flex-col justify-center hidden w-full h-full p-6 md:flex md:min-w-[432px] relative">
-                <Product {...props} />
+            <div className="flex-col justify-between items-center hidden w-full p-6 md:flex md:min-w-[432px]">
+                <div className="flex flex-col justify-center h-full">
+                    <Product {...props} />
+                </div>
                 <div id="kc-footer" />
             </div>
-            <div className="flex flex-col items-center justify-center w-full h-full col-span-full bg-card md:max-w-[800px] relative">
-                <Card className="flex flex-col justify-center w-full border-none rounded-none shadow-none max-w-[500px]">
-                    <CardHeader>
-                        <div className="mx-auto mb-4 kc-logo-text" />
-                        <CardTitle className="text-center">
-                            {!(
-                                auth !== undefined &&
-                                auth.showUsername &&
-                                !auth.showResetCredentials
-                            ) ? (
-                                displayRequiredFields ? (
-                                    <div
-                                        className={getClassName(
-                                            'kcContentWrapperClass'
-                                        )}
-                                    >
-                                        <div
-                                            className={clsx(
-                                                getClassName(
-                                                    'kcLabelWrapperClass'
-                                                ),
-                                                'subtitle'
-                                            )}
-                                        >
-                                            <span className="subtitle">
-                                                <span className="required">
-                                                    *
-                                                </span>
-                                                {msg('requiredFields')}
-                                            </span>
-                                        </div>
-                                        <div className="col-md-10">
-                                            <h1>{headerNode}</h1>
-                                        </div>
-                                    </div>
+            <div className="flex flex-col items-center justify-center w-full bg-card md:max-w-[800px] h-full relative overflow-auto">
+                <Card className="flex flex-col w-full overflow-auto border-none rounded-none shadow-none">
+                    <div className="max-w-[500px] mx-auto w-full flex flex-col items-center">
+                        <CardHeader>
+                            <div className="kc-logo-text" />
+                            <CardTitle className="text-center">
+                                {!(
+                                    auth !== undefined &&
+                                    auth.showUsername &&
+                                    !auth.showResetCredentials
+                                ) ? (
+                                    <h1>{headerNode}</h1>
                                 ) : (
-                                    <h1 id="kc-page-title">{headerNode}</h1>
-                                )
-                            ) : displayRequiredFields ? (
-                                <div
-                                    className={getClassName(
-                                        'kcContentWrapperClass'
-                                    )}
-                                >
-                                    <div
-                                        className={clsx(
-                                            getClassName('kcLabelWrapperClass'),
-                                            'subtitle'
-                                        )}
-                                    >
-                                        <span className="subtitle">
-                                            <span className="required">*</span>{' '}
-                                            {msg('requiredFields')}
-                                        </span>
-                                    </div>
-                                    <div className="col-md-10">
-                                        {showUsernameNode}
-                                        <div
-                                            className={getClassName(
-                                                'kcFormGroupClass'
-                                            )}
-                                        >
-                                            <div id="kc-username">
-                                                <label id="kc-attempted-username">
-                                                    {auth?.attemptedUsername}
-                                                </label>
-                                                <a
-                                                    id="reset-login"
-                                                    href={
-                                                        url.loginRestartFlowUrl
-                                                    }
-                                                >
-                                                    <div className="kc-login-tooltip">
-                                                        <i
-                                                            className={getClassName(
-                                                                'kcResetFlowIcon'
-                                                            )}
-                                                        ></i>
-                                                        <span className="kc-tooltip-text">
-                                                            {msg(
-                                                                'restartLoginTooltip'
-                                                            )}
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <>
-                                    {showUsernameNode}
-                                    <div
-                                        className={getClassName(
-                                            'kcFormGroupClass'
-                                        )}
-                                    >
-                                        <div id="kc-username">
-                                            <label id="kc-attempted-username">
+                                    <div className="flex flex-col gap-4">
+                                        <div>{showUsernameNode}</div>
+                                        <div className="flex items-center justify-center space-x-2">
+                                            <label>
                                                 {auth?.attemptedUsername}
                                             </label>
-                                            <a
-                                                id="reset-login"
-                                                href={url.loginRestartFlowUrl}
-                                            >
-                                                <div className="kc-login-tooltip">
-                                                    <i
-                                                        className={getClassName(
-                                                            'kcResetFlowIcon'
-                                                        )}
-                                                    ></i>
-                                                    <span className="kc-tooltip-text">
+                                            <TooltipProvider>
+                                                <Tooltip>
+                                                    <TooltipTrigger>
+                                                        <a
+                                                            id="reset-login"
+                                                            href={
+                                                                url.loginRestartFlowUrl
+                                                            }
+                                                        >
+                                                            <Redo2 />
+                                                        </a>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
                                                         {msg(
                                                             'restartLoginTooltip'
                                                         )}
-                                                    </span>
-                                                </div>
-                                            </a>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         </div>
                                     </div>
-                                </>
-                            )}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex flex-col h-full overflow-auto gap-y-4 ">
-                        {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
-                        {displayMessage &&
-                            message !== undefined &&
-                            (message.type !== 'warning' ||
-                                !isAppInitiatedAction) && (
-                                <Alert
-                                    // className={clsx(
-                                    //     'alert',
-                                    //     `alert-${message.type}`
-                                    // )}
-                                    variant={
-                                        message.type === 'error'
-                                            ? 'destructive'
-                                            : 'default'
-                                    }
-                                >
-                                    {message.type === 'error' && (
-                                        <AlertCircle size={16} />
-                                    )}
-                                    <AlertTitle className="uppercase">
-                                        {message.type}
-                                    </AlertTitle>
-                                    <AlertDescription>
-                                        {message.summary}
-                                    </AlertDescription>
-                                </Alert>
-                            )}
-                        {children}
-                        {auth !== undefined &&
-                            auth.showTryAnotherWayLink &&
-                            showAnotherWayIfPresent && (
-                                <form action={url.loginAction} method="post">
-                                    <input
-                                        type="hidden"
-                                        name="tryAnotherWay"
-                                        value="on"
-                                    />
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a
-                                        href="#"
-                                        id="try-another-way"
-                                        onClick={() => {
-                                            document.forms[
-                                                'kc-select-try-another-way-form' as never
-                                            ].submit()
-                                            return false
-                                        }}
-                                    >
-                                        {msg('doTryAnotherWay')}
-                                    </a>
-                                </form>
-                            )}
-                        {displayInfo && infoNode}
-                        <div className="flex items-center justify-center mt-7">
-                            {realm.internationalizationEnabled &&
-                                (assert(locale !== undefined), true) &&
-                                locale.supported.length > 1 && (
-                                    <Select
-                                        onValueChange={(languageTag) => {
-                                            console.log(languageTag)
-
-                                            changeLocale(languageTag)
-                                        }}
-                                    >
-                                        <SelectTrigger className="w-fit">
-                                            <SelectValue
-                                                placeholder={
-                                                    labelBySupportedLanguageTag[
-                                                        currentLanguageTag
-                                                    ]
-                                                }
-                                            />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectGroup>
-                                                {locale.supported.map(
-                                                    ({ languageTag }) => (
-                                                        <SelectItem
-                                                            key={languageTag}
-                                                            value={languageTag}
-                                                        >
-                                                            {
-                                                                labelBySupportedLanguageTag[
-                                                                    languageTag
-                                                                ]
-                                                            }
-                                                        </SelectItem>
-                                                    )
-                                                )}
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
                                 )}
-                        </div>
-                    </CardContent>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex flex-col w-full gap-y-4">
+                            {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
+                            {displayMessage &&
+                                message !== undefined &&
+                                (message.type !== 'warning' ||
+                                    !isAppInitiatedAction) && (
+                                    <Alert
+                                        // className={clsx(
+                                        //     'alert',
+                                        //     `alert-${message.type}`
+                                        // )}
+                                        variant={
+                                            message.type === 'error'
+                                                ? 'destructive'
+                                                : 'default'
+                                        }
+                                    >
+                                        {message.type === 'error' && (
+                                            <AlertCircle size={16} />
+                                        )}
+                                        <AlertTitle className="uppercase">
+                                            {message.type}
+                                        </AlertTitle>
+                                        <AlertDescription>
+                                            {message.summary}
+                                        </AlertDescription>
+                                    </Alert>
+                                )}
+                            {children}
+                            {auth !== undefined &&
+                                auth.showTryAnotherWayLink &&
+                                showAnotherWayIfPresent && (
+                                    <form
+                                        action={url.loginAction}
+                                        method="post"
+                                    >
+                                        <input
+                                            type="hidden"
+                                            name="tryAnotherWay"
+                                            value="on"
+                                        />
+                                        <Button
+                                            variant={'link'}
+                                            className="h-auto p-0"
+                                        >
+                                            <a
+                                                href="#"
+                                                onClick={() => {
+                                                    document.forms[
+                                                        'kc-select-try-another-way-form' as never
+                                                    ].submit()
+                                                    return false
+                                                }}
+                                            >
+                                                {msg('doTryAnotherWay')}
+                                            </a>
+                                        </Button>
+                                    </form>
+                                )}
+                            {displayInfo && infoNode}
+                            <div className="flex items-center justify-center mt-7">
+                                {realm.internationalizationEnabled &&
+                                    (assert(locale !== undefined), true) &&
+                                    locale.supported.length > 1 && (
+                                        <Select
+                                            onValueChange={(languageTag) => {
+                                                console.log(languageTag)
+
+                                                changeLocale(languageTag)
+                                            }}
+                                        >
+                                            <SelectTrigger className="w-fit">
+                                                <SelectValue
+                                                    placeholder={
+                                                        labelBySupportedLanguageTag[
+                                                            currentLanguageTag
+                                                        ]
+                                                    }
+                                                />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    {locale.supported.map(
+                                                        ({ languageTag }) => (
+                                                            <SelectItem
+                                                                key={
+                                                                    languageTag
+                                                                }
+                                                                value={
+                                                                    languageTag
+                                                                }
+                                                            >
+                                                                {
+                                                                    labelBySupportedLanguageTag[
+                                                                        languageTag
+                                                                    ]
+                                                                }
+                                                            </SelectItem>
+                                                        )
+                                                    )}
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    )}
+                            </div>
+                        </CardContent>
+                    </div>
                 </Card>
                 <div id="kc-footer" className="md:hidden" />
             </div>

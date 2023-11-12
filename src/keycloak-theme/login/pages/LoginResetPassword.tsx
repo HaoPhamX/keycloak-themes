@@ -49,12 +49,10 @@ export default function LoginResetPassword(
                                 : undefined
                         }
                     />
-                    <div>
-                        <Button variant={'link'} className="p-0">
-                            <a href={url.loginUrl}>{msg('backToLogin')}</a>
-                        </Button>
-                    </div>
                 </div>
+                <Button variant={'link'} className="h-auto p-0">
+                    <a href={url.loginUrl}>{msg('backToLogin')}</a>
+                </Button>
                 <input
                     className={buttonVariants({
                         size: 'lg',

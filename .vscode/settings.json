@@ -1,3 +1,45 @@
 {
-    "cSpell.words": ["keycloakify"]
+    "tailwindCSS.experimental.classRegex": [
+        [":\\s*?[\"'`]([^\"'`]*).*?,"],
+        ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+        ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+        ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+        ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+        "tw`([^`]*)", // tw`...`
+        "tw=\"([^\"]*)", // <div tw="..." />
+        "tw={\"([^\"}]*)", // <div tw={"..."} />
+        "tw\\.\\w+`([^`]*)", // tw.xxx`...`
+        "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
+    ],
+    "editor.formatOnSave": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.idea": true
+    },
+    "jest.autoRun": "off",
+    "debug.javascript.unmapMissingSources": true,
+    "cSpell.words": ["cmdk", "fortawesome", "Xmark"]
 }

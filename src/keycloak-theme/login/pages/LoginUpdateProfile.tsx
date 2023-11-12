@@ -1,4 +1,3 @@
-import { clsx } from 'keycloakify/tools/clsx'
 import type { PageProps } from 'keycloakify/login/pages/PageProps'
 import { useGetClassName } from 'keycloakify/login/lib/useGetClassName'
 import type { KcContext } from '../kcContext'

@@ -1,7 +1,6 @@
-import { type ClassValue } from "clsx"
-import { clsx, CxArg } from "keycloakify/tools/clsx";
-import { twMerge } from "tailwind-merge"
- 
+import { clsx, CxArg } from 'keycloakify/tools/clsx'
+import { twMerge } from 'tailwind-merge'
+
 export function cn(...inputs: CxArg[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs))
 }
